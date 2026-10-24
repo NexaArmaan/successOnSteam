@@ -1,0 +1,6 @@
+requests
+pandas
+numpy
+jupyter
+beautifulsoup4
+
