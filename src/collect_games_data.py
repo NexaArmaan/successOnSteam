@@ -62,6 +62,6 @@ for appid in game_ids:
 
 df = pd.DataFrame(rows)
 
-df.to_csv(GAMES_DATA_FILE)
+df.to_csv(GAMES_DATA_FILE, index=False)
 
 print(rows)
