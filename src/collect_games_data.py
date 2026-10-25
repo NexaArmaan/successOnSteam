@@ -45,9 +45,12 @@ for appid in game_ids:
     data = entry["data"]
     rows.append({
         'appid': data['steam_appid'],
+        'type': data['type'],
+        'name': data['name'],
         'genres': "; ".join(g['description'] for g in data.get('genres', [])), 
         'categories': "; ".join(c['description'] for c in data.get('categories', [])),
-        'price': data.get('price_overview', {}).get('final', 0),
+        'initial_price': data.get('price_overview', {}).get('initial', 0) / 100, 
+        'final_price': data.get('price_overview', {}).get('final', 0) / 100, # final is price w/ sale
         'release_date': data['release_date']['date'],
         'description': data['short_description'],
     })
