@@ -58,7 +58,7 @@ for appid in game_ids:
     print(f"current item: ( {id_count} / {len(game_ids)} )")
     id_count += 1
 
-    time.sleep(1.6) # to stay under rate limit
+    time.sleep(1.0) # to stay under rate limit
 
 df = pd.DataFrame(rows)
 
