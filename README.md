@@ -17,7 +17,7 @@ All data comes from public REST APIs; nothing was downloaded as a ready-made dat
 | SteamSpy catalog | `steamspy.com/api.php?request=all&page=N` | Game list to sample from, owner-count ranges, developer/publisher | `src/collect_steamspy.py` → `ids` | `data/raw/steamspy_page_{0,10,30}.json`, `data/raw/game_ids.csv` |
 | SteamSpy details | `steamspy.com/api.php?request=appdetails&appid=N` | Community tags with vote counts: perspective, art style, narrative | `src/collect_steamspy.py` → `details` | `data/raw/steamspy_raw.json` |
 | Steam Store | `store.steampowered.com/api/appdetails?appids=N` | Genres, gameplay categories, price, release date, description | `src/collect_games_data.py` | `data/raw/games_data.csv` |
-| Steam Reviews | `api.steampowered.com/IUserReviewsService/GetAppReviews/v1/` | Review counts, % positive, Steam rating label | `collect_reviews.py` | `data/steam_reviews_summary.csv` |
+| Steam Reviews | `api.steampowered.com/IUserReviewsService/GetAppReviews/v1/` | Review counts, % positive, Steam rating label | `src/collect_reviews.py` | `data/steam_reviews_summary.csv` |
 
 ### Sample
 
@@ -65,7 +65,7 @@ python src/collect_steamspy.py    # type: details
 python src/collect_games_data.py
 
 # 4. Review summaries
-python collect_reviews.py
+python src/collect_reviews.py
 
 # 5. Load the raw data and view its problems
 jupyter notebook notebooks/raw_data.ipynb   # Run All
@@ -86,7 +86,7 @@ All four collection steps have already been run and their output is committed.
 ## Repository layout
 
 ```
-collect_reviews.py            Reviews API collector
+src/collect_reviews.py        Reviews API collector
 app_ids.txt                   App IDs read by collect_reviews.py (same IDs as game_ids.csv)
 src/collect_steamspy.py       SteamSpy catalog + tag collector
 src/collect_games_data.py     Store API collector
