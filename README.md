@@ -160,3 +160,7 @@ notebooks/clean_and_merge.ipynb
 - SteamSpy owner counts are broad estimates; review counts are the more reliable popularity measure.
 - Review numbers are a snapshot from October 2026 and change over time.
 - The data shows associations, not causes.
+
+## Use of AI tools
+
+AI assistance (Anthropic's Claude) was used in a limited way during this project, mainly for help with setup, merging team branches, and drafting and reviewing parts of the cleaning notebook and this README. All data comes from the public APIs listed above, and the team reviewed the code and results.
