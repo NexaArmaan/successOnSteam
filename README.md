@@ -75,7 +75,7 @@ Steps 1, 3 and 4 have already been run and their output is committed. **Step 2 s
 
 ## Output
 
-`data/processed/steam_games_clean.csv` (same content in `steam_games_clean.json`): one row per game, 200 rows, 94 columns.
+Running the notebook creates `data/processed/steam_games_clean.csv` (same content in `steam_games_clean.json`): one row per game, 200 rows, 94 columns. Only the raw data is stored in this repo; the cleaned files are not committed and are rebuilt by running the notebook.
 
 ### Data dictionary
 
@@ -150,7 +150,7 @@ src/collect_steamspy.py       SteamSpy catalog + tag collector
 src/collect_games_data.py     Store API collector
 data/raw/                     Raw API output (never edited)
 data/steam_reviews_summary.csv
-data/processed/               Cleaned, merged dataset
+data/processed/               Cleaned, merged dataset (created by the notebook, not committed)
 notebooks/clean_and_merge.ipynb
 ```
 

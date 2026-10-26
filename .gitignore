@@ -21,3 +21,6 @@ pyrightconfig.json
 # Operating system
 .DS_Store
 Thumbs.db
+
+# Cleaned output (rebuilt by notebooks/clean_and_merge.ipynb, not committed)
+data/processed/
