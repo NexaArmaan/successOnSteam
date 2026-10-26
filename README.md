@@ -48,7 +48,7 @@ The four sources don't line up out of the box. Problems in the raw data include:
 | Tags are free-form community labels | Hundreds of user-voted tags per game, with no fixed perspective or art-style field |
 | Duplicate file | The reviews CSV is in the repo root and in `data/` |
 
-All raw files are left exactly as the APIs returned them. `notebooks/clean_and_merge.ipynb` loads them and shows these problems.
+All raw files are left exactly as the APIs returned them. `notebooks/raw_data.ipynb` loads them and shows these problems.
 
 ## How to reproduce
 
@@ -68,7 +68,7 @@ python src/collect_games_data.py
 python collect_reviews.py
 
 # 5. Load the raw data and view its problems
-jupyter notebook notebooks/clean_and_merge.ipynb   # Run All
+jupyter notebook notebooks/raw_data.ipynb   # Run All
 ```
 
 All four collection steps have already been run and their output is committed.
@@ -92,7 +92,7 @@ src/collect_steamspy.py       SteamSpy catalog + tag collector
 src/collect_games_data.py     Store API collector
 data/raw/                     Raw API output (never edited)
 data/steam_reviews_summary.csv
-notebooks/clean_and_merge.ipynb
+notebooks/raw_data.ipynb
 ```
 
 ## Limitations
