@@ -5,6 +5,7 @@ __pycache__/
 # Virtual environments
 .venv/
 venv/
+pyrightconfig.json
 
 # Secrets
 .env
@@ -20,3 +21,6 @@ venv/
 # Operating system
 .DS_Store
 Thumbs.db
+
+# Cleaned output (rebuilt by notebooks/clean_and_merge.ipynb, not committed)
+data/processed/
