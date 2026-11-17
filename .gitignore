@@ -1,26 +1,22 @@
-# Python
-__pycache__/
-*.pyc
-
-# Virtual environments
+# Virtual environments and credentials
 .venv/
 venv/
-pyrightconfig.json
-
-# Secrets
 .env
 .env.*
 !.env.example
-
-# Jupyter
+__pycache__/
+*.py[cod]
 .ipynb_checkpoints/
-
-# VS Code
+.pytest_cache/
 .vscode/
-
-# Operating system
-.DS_Store
+.idea/
 Thumbs.db
+.DS_Store
 
-# Cleaned output (rebuilt by notebooks/clean_and_merge.ipynb, not committed)
-data/processed/
+# Share the combined review CSV and cleaned CSVs through Git when reasonably sized,
+# so teammates can actually run the notebooks without separate handoffs.
+data/raw/reviews/by_app/*.csv
+data/raw/reviews/collection_progress.json
+
+# Don't commit a machine-generated ZIP of the repo
+*.zip

@@ -2,5 +2,8 @@ requests
 pandas
 numpy
 jupyter
+matplotlib
+seaborn
+scipy
+scikit-learn
 beautifulsoup4
-
