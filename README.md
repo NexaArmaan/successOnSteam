@@ -97,7 +97,7 @@ This provides a starting point for investigating the relationship between gamepl
 
 However, further analysis is required to determine how these percentages compare with players who have fewer hours and whether results differ across genres or individual games.
 
-These figures are preliminary observations, not final statistical conclusions.
+These were early observations. See [Key Findings](#key-findings) below for the final results.
 
 ---
 
@@ -129,10 +129,13 @@ successOnSteam/
 │   │   └── reviews/
 │   │       └── by_app/
 │   │
+│   ├── individual_reviews_cleaned.csv
+│   │
 │   └── cleaned/
-│       ├── games_clean.csv
-│       ├── reviews_clean.csv
-│       └── merged_reviews.csv
+│       ├── games_data.csv
+│       ├── steamspy.json
+│       ├── steam_reviews_summary.csv
+│       └── reviews_with_games.csv   (created by running 03_eda_statistics.ipynb)
 │
 ├── notebooks/
 │   ├── raw_data.ipynb
@@ -148,9 +151,10 @@ successOnSteam/
 ├── figures/
 │
 └── docs/
+    └── Beyond_Playtime_Report_final.pdf
 ```
 
-*Note: Some cleaned datasets, figures, and analysis notebooks are currently placeholders or works in progress.*
+*Note: Notebooks 01–03 are complete. The machine learning notebook and figures are still in progress. `steamspy.json` in `data/cleaned/` is saved as CSV text despite its `.json` extension.*
 
 ### Folder Descriptions
 
@@ -196,11 +200,9 @@ successOnSteam/
 ### 1. Clone the Repository
 
 ```bash
-git clone <YOUR_REPOSITORY_URL>
+git clone https://github.com/NexaArmaan/successOnSteam.git
 cd successOnSteam
 ```
-
-Replace `<YOUR_REPOSITORY_URL>` with the actual GitHub repository URL.
 
 ### 2. Create a Virtual Environment
 
@@ -303,29 +305,29 @@ All original data remains available in `data/raw/` for reproducibility.
 
 ## Exploratory Data Analysis and Statistical Analysis
 
-Our EDA focuses on understanding how gameplay hours relate to positive and negative recommendations.
+The combined analysis is in `notebooks/03_eda_statistics.ipynb`, and the full write-up is in `docs/Beyond_Playtime_Report_final.pdf`.
 
-### Planned Analyses
+### What We Did
 
-**1. Playtime Distribution**
+1. Merged the cleaned reviews with the cleaned game data on `appid` and checked that no rows were lost, doubled, or left unmatched (6,998 reviews across 28 games).
+2. Added game features: primary genre (from SteamSpy user tags), multiplayer vs single-player only, story-rich, and free-to-play.
+3. Compared positive recommendation rates across the five playtime groups, overall and by genre and gameplay style.
+4. Ran statistical tests: chi-square with Cramér's V, Mann–Whitney U, a within-game Wilcoxon test, and Fisher exact tests.
+5. Sorted the 133 negative reviews from players with 100+ hours into complaint themes, and compared them with negative reviews from players under 100 hours.
 
-Examine how gameplay hours are distributed, including averages, medians, ranges, percentiles, and unusually high values.
+### Key Findings
 
-**2. Playtime vs. Recommendations**
+| Playtime group | Reviews | Positive rate |
+|---|---:|---:|
+| 0–2 hours | 1,317 | 63.3% |
+| 2–10 hours | 2,267 | 76.8% |
+| 10–50 hours | 1,959 | 85.1% |
+| 50–100 hours | 539 | 84.8% |
+| 100+ hours | 916 | 85.5% |
 
-Compare positive recommendation percentages across different playtime categories.
-
-**3. Genre and Gameplay Comparisons**
-
-Analyze whether the relationship differs across game genres and characteristics such as multiplayer and story-rich gameplay.
-
-**4. Long-Time Negative Reviewers**
-
-Investigate negative reviews from players with 100+ hours and compare their patterns with reviews from players with lower playtime.
-
-**5. Statistical Relationships**
-
-Use appropriate descriptive and inferential statistics, including chi-square tests and potentially logistic regression, to investigate relationships between playtime and recommendations.
+- **More playtime goes with more positive reviews, but only up to about 10 hours.** After that, the positive rate stays around 85%. The chi-square test is significant (p < 0.001) with a small-to-moderate effect (Cramér's V = 0.20). The pattern also holds within individual games: the longer-playing half of reviewers was more positive in 23 of 26 games.
+- **Genres and gameplay styles.** Multiplayer and single-player games follow almost the same pattern. Story-rich games show the strongest effect: only 34% of their reviews from players with under 2 hours are positive. Roguelikes are liked at every playtime level.
+- **Long-time negative reviewers.** 14.5% of 100+ hour reviews are negative (vs 22.7% under 100 hours). Compared with shorter-playtime critics, they complain much more about updates or mods breaking the game (22% vs 6%), the game getting worse over time (25% vs 14%), and the developer or paid content (41% vs 22%). They are also more than twice as likely to say they used to love the game.
 
 ### Planned Visualizations
 
@@ -380,9 +382,9 @@ To reduce data leakage, we intend to evaluate model generalization using game-le
 | Member | Primary Responsibilities |
 |---|---|
 | Armaan Arora | API collection, individual review dataset, repository setup, integration support, and later ML |
-| Shil Patel | Team-assigned cleaning, analysis, and project contributions |
-| D'Angelo Prepetit | Team-assigned cleaning, analysis, and project contributions |
-| Timothy Bas | Team-assigned cleaning, analysis, and project contributions |
+| Shil Patel | Combined dataset, EDA, statistical testing, long-time negative review analysis, and project report |
+| D'Angelo Prepetit | Individual review cleaning and initial review analysis |
+| Timothy Bas | Game data cleaning (Steam Store, SteamSpy, review summary) and game-level statistics |
 
 The remaining cleaning, visualization, statistics, documentation, and reporting tasks are divided among the team members, with shared review and integration before submission.
 
